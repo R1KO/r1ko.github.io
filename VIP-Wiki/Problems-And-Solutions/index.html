@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en" >
+	<![endif]-->
+	<!--[if gt IE 8]><!--> 
+	<html class="no-js" lang="en" >
+		<!--<![endif]-->
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Частые проблемы и их решения</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1 current">
+								<a class="current" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="">
+									<a class="" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Частые проблемы и их решения</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1 id="_1">Частые проблемы и их решения</h1>
+									<table class="docutils">
+										<thead>
+											<tr>
+												<th>№</th>
+												<th>Проблема</th>
+												<th>Решение</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td><code>"No groups available"</code> или <code>"Нет доступных групп"</code> при попытке добавления VIP-игрока</td>
+												<td>Файл <strong>groups.ini</strong> нужно сохранить в кодировке <strong><em>UTF-8 (Без BOM)</em></strong></td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td><code>"No available features"</code> или <code>"Нет доступных привилегий"</code></td>
+												<td>Не установлены VIP-модули либо <strong>смотреть пункт 1</strong></td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td><code>"No access"</code>или <code>"Нет доступа"</code>в VIP-меню</td>
+												<td>Не прописан параметр модуля в группу файле <strong>groups.ini</strong></td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td><code>Native "VIP_RegisterFeature" reported: Feature "Имя модуля" already defined !</code> в Errors Log</td>
+												<td>Модуль установлен несколько раз (либо несколько разных версий либо в разных папках).</br>Так же возможно модуль устарел и не поддерживает перезагрузку "на лету", для решения обновите до акутальной версии. Если же она отсутствует - <a href="../Core/Adaptation/">Адаптация модулей</a></td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td><code>Native "FormatEx" reported: Language phrase "Имя фразы" not found</code> в Errors Log</td>
+												<td>Отсутствуют фразы в переводе. Обратите внимание на <code>"Имя фразы"</code>и добавьте её в  <strong>vip_modules.phrases.txt</strong></td>
+											</tr>
+											<tr>
+												<td>6</td>
+												<td>VIP-меню ведет себя странно, пропадают пункты, всё смещается.</td>
+												<td><strong>Смотрите пункт 5</strong></td>
+											</tr>
+											<tr>
+												<td>7</td>
+												<td><code>Native ... reported: Translation string formatted incorrectly - missing at least 2 parameters</code> в Errors Log</td>
+												<td>Скачайте последнюю версию ядра и замените свои файлы перевода <strong>vip_core.phrases.txt</strong>, <strong>vip_modules.phrases.txt</strong> на только что скаченные</td>
+											</tr>
+											<tr>
+												<td>8</td>
+												<td><code>KeyValues Error: RecursiveLoadFromBuffer: got } in key in file addons/sourcemod/data/vip/cfg/groups.ini</code> в Errors Log</td>
+												<td>Забыли добавить скобку в файле  <strong>groups.ini</strong> или <strong>смотрите пункт 1</strong> присутствуют и нет ли лишних</td>
+											</tr>
+											<tr>
+												<td>9</td>
+												<td><code>Native "VIP_SetClientVIP" reported: Invalid group (test_vip)</code> в Errors Log</td>
+												<td>Некорректная группа в файле <strong>cfg/vip/vip_test.cfg</strong> укажите свою группу  которая есть в <strong>groups.ini</strong></td>
+											</tr>
+											<tr>
+												<td>10</td>
+												<td><code>Exception reported: Plugin handle 1350135 is invalid (error 1)</code> в Errors Log</td>
+												<td>Был перезагружен устаревший модуль. <strong>Смотрите пункт 4</strong></td>
+											</tr>
+											<tr>
+												<td>11</td>
+												<td><code>VIP_Core.smx ([VIP] Core): unexpected error 23 in AskPluginLoad callback</code> в Errors Log</td>
+												<td>Установлено несколько ядер одновременно (разных версий либо в разных папках).</td>
+											</tr>
+											<td>12</td>
+											<td>Если всё верно но проблемы остались либо другие проблемы</td>
+											<td>Проверьте целостность структуры конфигов, все ли кавычки и скобки присутствуют и нет ли лишних.</td>
+											</tr>
+										</tbody>
+									</table>
+									<h2 id="-">Если вашей проблемы здесь нет вам сюда -&gt; <a href="http://hlmod.ru/threads/bag-report.28639/"><font color="red"><b>Баг репорт</b></font></a></h2>
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>
+	<!--
+		MkDocs version : 0.17.0
+		Build Date UTC : 2017-12-29 20:31:34
+		-->

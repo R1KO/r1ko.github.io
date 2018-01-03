@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+	<html class="no-js" lang="en" >
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Модули - Адаптация</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="current">
+										<a class="current" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Модули &raquo;</li>
+									<li>Адаптация</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1 id="_1">Адаптация</h1>
+									<p>Обновление позволяет решить такие проблемы:</p>
+									<ol>
+										<li>Адекватная загрузка/выгрузка модуля средствами SourceMod (<code>sm plugins load/reload/unload</code>)</li>
+										<li>
+											Исправление события возрождения игрока:
+											<ul>
+												<li>(<code>#1</code>) Фатальная ошибка при запуске модуля: <code>Native "VIP_HookClientSpawn" was not found</code></li>
+												<li>(<code>#2</code>) Предупреждение при компиляции модуля: <code>warning 234: symbol "VIP_HookClientSpawn" is marked as deprecated: Use VIP_OnPlayerSpawn</code></li>
+												<li>(<code>#3</code>) Фатальная ошибка при компиляции модуля: <code>error 017: undefined symbol "VIP_HookClientSpawn"</code></li>
+											</ul>
+										</li>
+									</ol>
+									<p><strong><em>Примечание</em></strong> - <code>ф-я</code> сокращение от <code>функция</code></p>
+									<p>Для примера будет использован следующий код:</p>
+									<pre><code class="cpp">// Это уникальное имя ф-и. Оно разное в каждом модуле
+#define VIP_MODULE      &quot;module1&quot;
+// Может выглядеть так
+new const String:g_sFeature[] = &quot;module1&quot;;
+
+public OnPluginStart() 
+{
+    // код
+}
+
+public VIP_OnVIPLoaded()
+{
+    VIP_RegisterFeature(VIP_MODULE,     BOOL);
+}
+</code></pre>
+									<p><code>"module1"</code> - Имя ф-и</p>
+									<p><code>VIP_MODULE</code> - Псевдоним ф-и</p>
+									<ol>
+										<li>Если уникальное имя ф-и выглядит так:</li>
+									</ol>
+									<pre><code class="cpp">#define VIP_MODULE      &quot;module1&quot;
+</code></pre>
+									<p>То меняем на</p>
+									<pre><code class="cpp">// Для старого синтаксиса
+static const String:g_sFeature[] = &quot;module1&quot;;
+
+// Для нового синтаксиса
+static const char g_sFeature[] = &quot;module1&quot;;
+</code></pre>
+									<ol>
+										<li>
+											<p>Затем заменяем все <code>VIP_MODULE</code> на <code>g_sFeature</code>.</p>
+										</li>
+										<li>
+											<p>Ищем функцию <code>OnPluginStart()</code> и добавляем в её конец</p>
+										</li>
+									</ol>
+									<pre><code class="cpp">if(VIP_IsVIPLoaded())
+{
+    VIP_OnVIPLoaded();
+}
+</code></pre>
+									<p>Если же функции <code>OnPluginStart()</code> нет то дописываем её. Должно получиться так:</p>
+									<pre><code class="cpp">public OnPluginStart() 
+{
+    // Код (если он был)
+
+    if(VIP_IsVIPLoaded())
+    {
+        VIP_OnVIPLoaded();
+    }
+}
+</code></pre>
+									<ol>
+										<li>Дальше ищем функцию <code>OnPluginEnd()</code>. Чаще всего её нет поэтому её нужно будет добавить</li>
+									</ol>
+									<pre><code class="cpp">public OnPluginEnd() 
+{
+    // Код (если он был)
+
+    if(CanTestFeatures() &amp;&amp; GetFeatureStatus(FeatureType_Native, &quot;VIP_UnregisterFeature&quot;) == FeatureStatus_Available)
+    {
+        VIP_UnregisterFeature(g_sFeature);
+    }
+}
+</code></pre>
+									<p>После этого проблема <code>#1</code> будет решена.</p>
+									<p>Еще 1 пример для модулей с 2-я функциями (на подобии скинов, трейлов и т.д.):</p>
+									<ul>
+										<li>Функция вкл/выкл</li>
+										<li>Функция настройки</li>
+									</ul>
+									<p>Выглядят они примерно так:</p>
+									<pre><code class="cpp">#define VIP_SKINS           &quot;Skins&quot;
+#define VIP_SKINS_MENU      &quot;Skins_Menu&quot;
+
+public VIP_OnVIPLoaded()
+{
+    VIP_RegisterFeature(VIP_SKINS, STRING, _, OnToggleItem);
+    VIP_RegisterFeature(VIP_SKINS_MENU, _, SELECTABLE, OnSelectItem, _, OnDrawItem);
+}
+</code></pre>
+									<p>Для обновления такого типа модулей делаем так:</p>
+									<ol>
+										<li>Заменяем объявление ф-й</li>
+									</ol>
+									<pre><code class="cpp">#define VIP_SKINS           &quot;Skins&quot;
+#define VIP_SKINS_MENU      &quot;Skins_Menu&quot;
+</code></pre>
+									<p>на</p>
+									<pre><code class="cpp">// Для старого синтаксиса
+static const String:g_sFeature[][] = {&quot;Skins&quot;, &quot;Skins_Menu&quot;};
+
+// Для нового синтаксиса
+static const char g_sFeature[][] = {&quot;Skins&quot;, &quot;Skins_Menu&quot;};
+</code></pre>
+									<ol>
+										<li>
+											<p>Заменяем все <code>VIP_SKINS</code> на <code>g_sFeature[0]</code> и <code>VIP_SKINS_MENU</code> на <code>g_sFeature[1]</code></p>
+										</li>
+										<li>
+											<p>Изменяем/добавляем <code>OnPluginStart()</code></p>
+										</li>
+									</ol>
+									<pre><code class="cpp">public OnPluginStart() 
+{
+    // Код (если он был)
+
+    if(VIP_IsVIPLoaded())
+    {
+        VIP_OnVIPLoaded();
+    }
+}
+</code></pre>
+									<ol>
+										<li>Изменяем/добавляем <code>OnPluginEnd()</code></li>
+									</ol>
+									<pre><code class="cpp">public OnPluginEnd() 
+{
+    // Код (если он был)
+
+    if(CanTestFeatures() &amp;&amp; GetFeatureStatus(FeatureType_Native, &quot;VIP_UnregisterFeature&quot;) == FeatureStatus_Available)
+    {
+        VIP_UnregisterFeature(g_sFeature[0]);
+        VIP_UnregisterFeature(g_sFeature[1]);
+    }
+}
+</code></pre>
+									<p>Главное соблюдать закономерность: Для каждой <code>VIP_RegisterFeature</code> в <code>VIP_OnVIPLoaded()</code> должна быть <code>VIP_UnregisterFeature</code> в <code>OnPluginEnd()</code></p>
+									<p>Больше примеров можете посмотреть в уже обновлённых модулях.</p>
+									<p>Для решения проблем <code>#2</code> и <code>#3</code>:</p>
+									<ol>
+										<li>В <code>OnPluginStart()</code> ищем <code>VIP_HookClientSpawn(OnPlayerSpawn);</code></li>
+										<li>Удаляем эту строку</li>
+										<li>Далее ищем:</li>
+									</ol>
+									<pre><code class="cpp">public OnPlayerSpawn(iClient, iTeam, bool:bIsVIP)
+</code></pre>
+									<p>и заменяем на</p>
+									<pre><code class="cpp">// Для старого синтаксиса
+public VIP_OnPlayerSpawn(iClient, iTeam, bool:bIsVIP)
+
+// Для нового синтаксиса
+public void VIP_OnPlayerSpawn(int iClient, int iTeam, boolbIsVIP)
+</code></pre>
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>

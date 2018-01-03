@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+	<html class="no-js" lang="en" >
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Ядро - Переменные (ConVar`s)</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="current">
+										<a class="current" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Ядро &raquo;</li>
+									<li>Переменные (ConVar`s)</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1 id="_1">Консольные переменные</h1>
+									<code>cfg/vip/VIP_Core.cfg</code>
+									<pre><code>// Добавить пункт "Управление VIP" в админ-меню.
+// -
+// Default: "1"
+sm_vip_add_item_to_admin_menu "1"
+
+// Флаг админа, необходимый чтобы иметь доступ к управлению VIP-игроками.
+// -
+// Default: "z"
+sm_vip_admin_flag "z"
+
+// Автоматически открывать VIP-меню при входе (0 - Выключено, 1 - Включено)
+// -
+// Default: "0"
+// Minimum: "0.000000"
+// Maximum: "1.000000"
+sm_vip_auto_open_menu "0"
+
+// Удалять VIP-игроков у которых истек срок:
+//      -1 - Не удалять
+//      0 - Удалять сразу
+//      Больше 0 - Количество дней, по истечению которых удалять
+// -
+// Default: "1"
+// Minimum: "-1.000000"
+sm_vip_delete_expired "1"
+
+// Режим отображения недоступных функций в вип меню (0 - Сделать пункты неактивными, 1 - Скрывать пункты)
+// -
+// Default: "0"
+// Minimum: "0.000000"
+// Maximum: "1.000000"
+sm_vip_hide_no_access_items "0"
+
+// Вести ли лог logs/VIP_Logs.log (0 - Выключено, 1 - Включено)
+// -
+// Default: "1"
+// Minimum: "0.000000"
+// Maximum: "1.000000"
+sm_vip_logs_enable "1"
+
+// Команды для вызова VIP-меню (разделять ;)
+// -
+// Default: "vip;sm_vip;sm_vipmenu"
+sm_vip_menu_commands "vip;sm_vip;sm_vipmenu"
+
+// ID сервера при приспользовании MySQL базы данных
+// -
+// Default: "0"
+// Minimum: "0.000000"
+sm_vip_server_id "0"
+
+// Задержка перед установкой привилегий при возрождении игрока
+// -
+// Default: "1.0"
+// Minimum: "0.100000"
+sm_vip_spawn_delay "1.0"
+
+// Формат времени
+//      0 - Секунды
+//      1 - Минуты
+//      2 - Часы
+//      3 - Дни
+// -
+// Default: "0"
+// Minimum: "0.000000"
+// Maximum: "3.000000"
+sm_vip_time_mode "0"
+
+// Обновлять имена VIP-игроков в базе данных при входе(0 - Выключено, 1 - Включено)
+// -
+// Default: "1"
+// Minimum: "0.000000"
+// Maximum: "1.000000"
+sm_vip_update_name "1"
+
+// Статус функций по-умолчанию (0 - Выключены, 1 - Включены)
+// -
+// Default: "1"
+// Minimum: "0.000000"
+// Maximum: "1.000000"
+sm_vip_features_default_status "1"
+</code></pre>
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>

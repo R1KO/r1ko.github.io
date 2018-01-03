@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+	<html class="no-js" lang="en" >
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Модули - Установка и настройка</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="current">
+										<a class="current" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Модули &raquo;</li>
+									<li>Установка и настройка</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1 id="_1">Установка и настройка</h1>
+									<ol>
+										<li>
+											<p>Скачать архив с актуальной версией модуля:</p>
+											<ul>
+												<li><a href="https://github.com/R1KO/VIP-Modules/">GitHub</a></li>
+												<li><a href="http://hlmod.ru/resources/categories/vip.3/">HLMod</a></li>
+											</ul>
+										</li>
+										<li>
+											<p>Распаковать архив.</p>
+										</li>
+										<li>
+											<p>Залить файлы на сервер соблюдая иерархию.</p>
+										</li>
+										<li>
+											<p>Дописать фразы в файл перевода модулей 
+											<code>addons/sourcemod/translations/vip_modules.phrases.txt</code>
+												(<em>Написано в описании к каждому модулю. Если отсутствует - пропустите этот пункт</em>)
+											</p>
+										</li>
+										<li>
+											<p>Настроить конфиг модуля. Находится <code>addons/sourcemod/data/vip/modules/</code>.
+												(<em>Написано в описании к каждому модулю. Если отсутствует - пропустите этот пункт</em>)
+												Само имя файла конфигурации модуля указывается в теме с модулем.
+												За частую файлы конфигурации имеют структуру KeyValues (ключ - значение).
+											</p>
+										</li>
+										<li>
+											<p>Прописать нужным VIP-группам параметры, которые добавляет модуль. Находится <code>addons/sourcemod/data/vip/cfg/groups.ini</code>
+												(<em>Написано в описании к каждому модулю. Если отсутствует - пропустите этот пункт</em>)
+											</p>
+										</li>
+										<li>
+											<p>После запуска модуля, будет создан конфиг. Находится <code>cfg/vip/</code>.
+												(<em>Написано в описании к каждому модулю. Если отсутствует - пропустите этот пункт</em>)
+												Само имя файла конфигурации модуля совпадает с именем плагина или указывается в теме с модулем.
+												Эти файлы генерируются автоматически при первом запуске плагина.
+											</p>
+										</li>
+									</ol>
+									<hr/>
+									<h2 id="_2">Пример установки модуля</h2>
+									<p>Установим модуль <a href="http://hlmod.ru/resources/vip-base-functions.532/">[VIP] Base Functions</a></p>
+									<ol>
+										<li>Скачиваем архив <a href="http://hlmod.ru/resources/vip-base-functions.532/">[VIP] Base Functions</a></li>
+										<li>Распаковываем архив</li>
+										<li>Заливаем файлы на сервер соблюдая иерархию.</li>
+										<li>Необходимо добавить фразы.</li>
+									</ol>
+									<p>В теме с модулем видим:
+										<img alt="alt text" src="http://dl4.joxi.net/drive/2017/10/29/0001/2920/88936/36/827723cf9b.png" title="Topic_Phrases" />
+									</p>
+									<p>Открываем файл <code>addons/sourcemod/translations/vip_modules.phrases.txt</code> и ищем в нем фразы: <code>"HP"</code>, <code>"Armor"</code>, <code>"Money"</code>, <code>"Speed"</code>.</p>
+									<p>Если их или какой-то из них нет - добавляем:
+										<img alt="alt text" src="http://dl4.joxi.net/drive/2017/10/29/0001/2920/88936/36/f465cd2b14.png" title="Phrases" />
+									</p>
+									<ol>
+										<li>Настроить конфиг модуля - <strong><em>Пропускаем</em></strong>, т.к. в теме ничего о нем не сказано.</li>
+										<li>Прописать нужным VIP-группам параметры, которые добавляет модуль:</li>
+									</ol>
+									<p>В теме с модулем видим:
+										<img alt="alt text" src="http://dl4.joxi.net/drive/2017/10/29/0001/2920/88936/36/1786838f32.png" title="Topic_Groups" />
+									</p>
+									<p>Добавляем:
+										<img alt="alt text" src="http://dl4.joxi.net/drive/2017/10/29/0001/2920/88936/36/9a9ef36c6c.png" title="Groups" />
+									</p>
+									<ol>
+										<li>После запуска модуля, будет создан конфиг:</li>
+									</ol>
+									<p>В теме с модулем видим:
+										<img alt="alt text" src="http://dl4.joxi.net/drive/2017/10/29/0001/2920/88936/36/ce9a64a1b8.png" title="Topic_CFG" />
+									</p>
+									<p>Даем модулю запуститься (перезагружаем сервер/меняем карту/sm plugins load <em>имя</em>) и открываем создавшийся файл <code>cfg/vip/VIP_Base_Functions.cfg</code>
+										<img alt="alt text" src="http://dl4.joxi.net/drive/2017/10/29/0001/2920/88936/36/0e1c69887e.png" title="CFG" />
+									</p>
+									<p>Настраиваем как нужно и сохраняем изменения.</p>
+									<p>На этом установка и настройка модуля завершена.</p>
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+	<html class="no-js" lang="en" >
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Модули - Для разработчиков</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="current">
+										<a class="current" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+										<ul class="subnav">
+											<li class="toctree-l2"><a href="#_1">Условные соглашения</a></li>
+											<li class="toctree-l2"><a href="#_2">Привязка плагинов к VIP</a></li>
+											<li class="toctree-l2"><a href="#_3">Написание модулей</a></li>
+										</ul>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Модули &raquo;</li>
+									<li>Для разработчиков</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1>Для разработчиков</h1>
+									<h2 id="_1">Условные соглашения</h2>
+									<ol>
+										<li>
+											<p>Если модуль имеет конфиг, он должен лежать в <code>addons/sourcemod/data/vip/modules/</code></p>
+										</li>
+										<li>
+											<p>Если модуль имеет квары, то конфиг должен создаваться в <code>cfg/vip</code>:</p>
+										</li>
+									</ol>
+									<pre><code class="cpp">AutoExecConfig(true, &quot;Имя модуля&quot;, &quot;vip&quot;);
+</code></pre>
+									<ol>
+										<li>VIP предоставляет доступ к хэш-карте (adt_trie -&gt; StringMap) с настройками VIP-игрока.
+											Эта хэш-карта хранит в себе функции к которым имеет доступ игрок, а так же некоторую служебную информацию (VIP-группы, сроки и т.д.).
+											Вы можете использовать её в своих целях.
+											Например, вместо создания глобальных пременных для хранения выбранного игроком цвета,
+											предмета и т.д. данные можно записать в хэш-карту и они будут хранится до тех пор пока игрок на сервере.
+										</li>
+									</ol>
+									<p>Для избежания конфликтов все ключи используемые ядром имеют вид <code>Core-&gt;Ключ</code>.
+										Следовательно если модуль хочет сохранить какую-то информацию в хэш-карту, он должен делать это по ключу который должен иметь вид <code>Имя_модуля-&gt;Ключ</code>.
+									</p>
+									<p>Примеры:</p>
+									<ul>
+										<li><code>Skins-&gt;Model</code> - путь к скину игрока (<code>.mdl</code>)</li>
+										<li><code>Skins-&gt;ArmsModel</code> - путь к скину рук игрока (<code>.mdl</code>)</li>
+										<li><code>Tracers-&gt;Color</code> - цвет трассеров игрока</li>
+										<li><code>Trails-&gt;Material</code> - индекс кешированной модели трейла игрока</li>
+										<li>
+											<p><code>Trails-&gt;Width</code> - ширину трейла игрока</p>
+										</li>
+										<li>
+											<p>Источник VIP-статуса.</p>
+										</li>
+									</ul>
+									<p>В старых версиях ядра была такая вещь, как <code>тип авторизации</code>. Она показывала каким образом игрок получил VIP-статус (SteamID, IP-адрес, Ник, Админ-флаги, Админ-группа).
+										В 3.0 она была удалена. Поэтому для возможности определения происхождения VIP-статуса игрока предлагается после выдачи записывать в хэш-карту игрока следующее:
+									</p>
+									<ul>
+										<li>Ключ: <code>"Core-&gt;Owner"</code></li>
+										<li>
+											Значение:
+											<ul>
+												<li><code>"Core"</code> или отсутствует - Выдано ядром (обычный VIP-игрок загруженный из базы).</li>
+												<li><code>"AdminFlag"</code> - Выдано модулем Admin по Админ-флагам.</li>
+												<li><code>"AdminGroup"</code> - Выдано модулем Admin по Админ-группе.</li>
+												<li><code>"Test"</code> - Выдано модулем Test.</li>
+												<li><code>...</code> - Используйте свои значения.</li>
+											</ul>
+										</li>
+									</ul>
+									<p>Таким образом можно будет легко узнать каким образом игрок получил VIP-статус и разрешить конфликтные ситуации.</p>
+									<hr/>
+									<h2 id="_2">Привязка плагинов к VIP</h2>
+									<p>Зачем это нужно? Ну например добавить VIP-игроку иммунитет от чего-то. Либо сделать модуль из какого-то плагина.</p>
+									<p>Подключаем библиотеку:</p>
+									<pre><code class="cpp">#include &lt;vip_core&gt;
+</code></pre>
+									<p>Далее решаем хотим мы это сделать для всех VIP-игроков или только для тех, кому выдан доступ через группу.</p>
+									<p>Если для всех то достаточно добавить в нужных местах проверку:</p>
+									<pre><code class="cpp">if(VIP_IsClientVIP(iClient))
+{
+    // Это VIP-игрок
+}
+</code></pre>
+									<p>Если же только по доступу то:</p>
+									<pre><code class="cpp">static const char g_sFeature[] = &quot;MyFunc&quot;; // Уникальное имя ф-и
+
+public void VIP_OnVIPLoaded()
+{
+    VIP_RegisterFeature(g_sFeature, BOOL, HIDE);
+    // Если пишем BOOL то в параметрах 1/0
+    // HIDE значит что ф-я скрыта, она не будет показана у игрока в меню, её нельзя отключить и не нужно добавлять в перевод.
+    // Если HIDE не писать то ф-ю можно будет вкл/выкл и нужно добавить фразу в перевод.
+}
+</code></pre>
+									<p>А дальше просто в нужном месте проверяем:</p>
+									<pre><code class="cpp">if(VIP_IsClientVIP(iClient) &amp;&amp; VIP_IsClientFeatureUse(iClient, g_sFeature))
+{
+    // Это VIP-игрок и он имеет доступ к ф-и.
+}
+</code></pre>
+									<p>Начиная с версии ядра <code>3.0</code> делать <code>VIP_IsClientVIP(iClient)</code> перед <code>VIP_IsClientFeatureUse(iClient, g_sFeature)</code> стало не обязательно.</p>
+									<hr/>
+									<h2 id="_3">Написание модулей</h2>
+									<p>Для написания модуля нам понадобится всё что нужно для написания любого другого плагина + библиотека випа <a href="https://github.com/R1KO/VIP-Core/blob/new-style/addons/sourcemod/scripting/include/vip_core.inc">vip_core.inc</a>.</p>
+									<p>Как пример будем писать модуль телепорта к игроку или куда смотрит прицел.</p>
+									<p>Подключаем необходимые библиотеки:</p>
+									<pre><code class="cpp">#pragma semicolon 1
+
+#include &lt;sourcemod&gt;
+#include &lt;sdktools&gt;
+#include &lt;vip_core&gt;
+</code></pre>
+									<p>Первым делом нужно зарегистрировать функцию:</p>
+									<pre><code class="cpp">native VIP_RegisterFeature(
+    const String            szFeature[],    // Уникальное имя ф-и
+    VIP_ValueType           ValType                 = VIP_NULL, // Тип данных ф-и
+    VIP_FeatureType         FeatureType             = TOGGLABLE,        // Тип ф-и
+    ItemSelectCallback      Item_select_callback    = INVALID_FUNCTION, // Каллбэк нажатия на пункт в меню
+    ItemDisplayCallback     Item_display_callback   = INVALID_FUNCTION, // Каллбэк отображения текста пункта меню
+    ItemDrawCallback        Item_draw_callback      = INVALID_FUNCTION, // Каллбэк отображения стиля пункта меню
+    VIP_ToggleState         eDefStatus              = NO_ACCESS         // Значение ф-и по-умолчанию
+    );
+</code></pre>
+									<p>У нас есть 5 типов данных VIP-функций:
+									<ul>
+										<li><code>VIP_NULL</code> - Нет данных</li>
+										<li><code>INT</code> - Целое число</li>
+										<li><code>FLOAT</code> - Число с точкой (дробное)</li>
+										<li><code>BOOL</code> - 1/0 (true/false, истина/ложь)</li>
+										<li><code>STRING</code> - Строка</li>
+									</ul>
+									</p>
+									<p>Поскольку в данном модуле мне нужно только разрешить/запретить использование логично было бы использовать <code>BOOL</code>, но поскольку я хочу позволить ограничивать количество телепортов за раунд - буду использовать <code>INT</code>, чтобы указывать количество раз.</p>
+									<p>Типы VIP-функций:
+									<ul>
+										<li><code>TOGGLABLE</code> - В VIP-меню можно будет включать/выключать ф-ю</li>
+										<li><code>SELECTABLE</code> - В VIP-меню можно будет только нажимать на пункт</li>
+										<li><code>HIDE</code> - Скрытый. Ф-я не добавляется в VIP-меню</li>
+									</ul>
+									</p>
+									<p>Поскольку телепорт не имеет смысла включать выключать, а нужно при нажатии в VIP-меню показывать другое меню - буду использовать тип `SELECTABLE`.</p>
+
+									<p>Изначально я предполагаю что если <code>Teleport</code> указано:
+									<ul>
+										<li><code>0</code> - нет доступа</li>
+										<li><code>&gt; 0</code> - кол-во использований за раунд.</li>
+										<li><code>-1</code> - безлимит</li>
+									</ul>
+									</p>
+
+И так регистрируем функцию:
+<pre><code class="cpp">
+new g_iClientTeleports[MAXPLAYERS+1]; // Массив переменных для подсчета количества телепортаций
+
+static const char g_sFeature[] = &quot;Teleport&quot;; // Создаем константу, которая будет уникальным именем нашей функции.
+
+public void VIP_OnVIPLoaded() // Событие когда ядро VIP-плагина загрузилось и готово к работе.
+{
+    VIP_RegisterFeature(g_sFeature, INT, SELECTABLE, OnSelectItem, OnDisplayItem, OnDrawItem); // Регистрируем
+    /*
+    OnSelectItem - Функция будет вызыватся при нажатии на пункт
+    OnDisplayItem - Функция будет вызыватся при отображении текста пункта
+    OnDrawItem - Функция будет вызыватся при отображении стиля пункта
+    */
+}
+
+public OnPluginStart() // Плагин запустился
+{
+    HookEvent(&quot;round_start&quot;, Event_RoundStart, EventHookMode_PostNoCopy); // Ловим начало раунд для обнуления кол-ва телепортаций
+
+    LoadTranslations(&quot;vip_modules.phrases&quot;); // Подключаем файл перевода модулей
+
+    if(VIP_IsVIPLoaded()) // Если ядро VIP уже загружено
+    {
+        VIP_OnVIPLoaded(); // Имитируем вызов форварда
+    }
+}
+
+public OnPluginEnd()  // Плагин остановлен
+{
+    if(CanTestFeatures() &amp;&amp; GetFeatureStatus(FeatureType_Native, &quot;VIP_UnregisterFeature&quot;) == FeatureStatus_Available) // Если ядро VIP еще запущено
+    {
+        VIP_UnregisterFeature(g_sFeature); // Удаляем ф-ю
+    }
+}
+</code></pre>
+									<p>Нужно чтобы при нажатии на пункт открывалось другое меню.
+										Помним что имя ф-и при нажатии - <code>OnSelectItem</code>.
+										Исходя из прототипа:
+									</p>
+									<pre><code class="cpp">typeset ItemSelectCallback
+{
+    // Используется когда тип ф-и TOGGLABLE
+    function Action (int iClient, const char[] szFeature, VIP_ToggleState eOldStatus, VIP_ToggleState &amp;eNewStatus); 
+
+    // Используется когда тип ф-и SELECTABLE
+    function bool (int iClient, const char[] szFeature); 
+};
+</code></pre>
+									<p>Получаем:</p>
+									<pre><code class="cpp">public bool OnSelectItem(int iClient, const char[] szFeature)
+{
+    DisplayTeleportMenu(iClient); // Отправляем игроку наше меню
+
+    // Если вернуть true игроку снова откроется VIP-меню, нам это не нужно.
+    return false;
+}
+
+void DisplayTeleportMenu(int iClient)
+{
+    // Создаем меню
+    Menu hMenu = new Menu(MenuHandler_TeleportMenu);
+    hMenu.SetTitle(&quot;Телепорт\n &quot;);
+    hMenu.ExitBackButton = true;
+
+    hMenu.AddItem(&quot;&quot;, &quot;На позицию прицела\n &quot;); // Тут думаю всё ясно
+    hMenu.AddItem(&quot;&quot;, &quot;К игроку под прицелом\n &quot;);
+
+    // Добавляем игроков
+    char szUserID[16], String:szName[MAX_NAME_LENGTH];
+    for (int i = 1; i &lt;= MaxClients; ++i)
+    {
+        if (i != iClient &amp;&amp; IsClientInGame(i) &amp;&amp; IsPlayerAlive(i) &amp;&amp; GetClientName(i, szName, sizeof(szName)))
+        {
+            IntToString(GetClientUserId(i), szUserID, sizeof(szUserID));
+            hMenu.AddItem(szUserID, szName);
+        }
+    }
+
+    hMenu.Display(iClient, MENU_TIME_FOREVER);  // Отправляем меню
+}
+
+public int MenuHandler_TeleportMenu(Menu hMenu, MenuAction eAction, int iClient, int Item)
+{
+    switch(eAction)
+    {
+        case MenuAction_End: // Меню было завершено
+        {
+            delete hMenu; // Удаляем Handle меню
+        }
+        case MenuAction_Cancel: // Меню было закрыто
+        {
+            if(Item == MenuCancel_ExitBack) // Причина - игрок нажал &quot;Назад&quot;
+            {
+                // Открываем ему обратно VIP-меню
+                VIP_SendClientVIPMenu(iClient);
+            }
+        }
+        case MenuAction_Select: // Игрок нажал на пукнт меню
+        {
+            switch(Item)
+            {
+                case 0: // Игрок выбрал 1-й пункт
+                {
+                    float fPos[3];
+                    GetAimPos(iClient, fPos);
+                    TeleportEntity(iClient, fPos, NULL_VECTOR, NULL_VECTOR);
+                    ++g_iClientTeleports[iClient];
+                }
+                case 1: // Игрок выбрал 2-й пункт
+                {
+                    int iTarget = GetClientAimTarget(iClient, true);
+                    if (iTarget &gt; 0)
+                    {
+                        float fPos[3];
+                        GetClientAbsOrigin(iTarget, fPos);
+                        TeleportEntity(iClient, fPos, NULL_VECTOR, NULL_VECTOR);
+                        ++g_iClientTeleports[iClient];
+                    }
+                    else
+                    {
+                        VIP_PrintToChatClient(iClient, &quot;Наведите прицел на игрока!&quot;);
+                    }
+                }
+                default: // Игрок выбрал другого игрока
+                {
+                    char szUserID[16];
+                    hMenu.GetItem(Item, sUserID, sizeof(sUserID));
+                    int iTarget = GetClientOfUserId(StringToInt(sUserID));
+                    if(iTarget != 0 &amp;&amp; IsPlayerAlive(iTarget)) // Цель еще на сервера и жива
+                    {
+                        float fPos[3];
+                        GetClientAbsOrigin(iTarget, fPos);
+                        TeleportEntity(iClient, fPos, NULL_VECTOR, NULL_VECTOR);
+                        ++g_iClientTeleports[iClient];
+                    }
+                    else
+                    {
+                        VIP_PrintToChatClient(iClient, &quot;Игрок больше недоступен!&quot;);
+                    }
+                }
+            }
+
+            DisplayTeleportMenu(iClient);
+        }
+    }
+
+    return 0;
+}
+
+// Ф-я получения координат, куда смотрит игрок
+void GetAimPos(int iClient, float fPos[3])
+{
+    float fAngles[3], fDirection[3];
+
+    GetClientEyeAngles(iClient, fAngles);
+    GetClientEyePosition(iClient, fPos);
+
+    TR_TraceRayFilter(fPos, fAngles, MASK_SOLID, RayType_Infinite, FilterGetAim, iClient);
+    TR_GetEndPosition(fPos);
+
+    GetVectorAngles(fPos, fAngles);
+
+    fAngles[0] = fAngles[2] = 0.0;
+    fAngles[1] += 180.0;
+    GetAngleVectors(fAngles, fDirection, NULL_VECTOR, NULL_VECTOR);
+    fPos[0] = fPos[0] + fDirection[0] * 30.0;
+    fPos[1] = fPos[1] + fDirection[1] * 30.0;
+    fPos[2] += 15.0;
+}
+
+public bool FilterGetAim(int iTraceEnt, int iMask, any iEntity)
+{
+    return iTraceEnt != iEntity;
+}
+</code></pre>
+									<p>Дальше я хочу чтобы отображении пункта показывалось сколько телепортаций осталось.
+										Смотрим прототип функции:
+									</p>
+									<pre><code class="cpp">typedef ItemDisplayCallback = function bool (int iClient, const char[] szFeature, char[] szDisplay, int iMaxLength);
+</code></pre>
+									<p>Помним что ф-я отображения текста пункта называлась OnDisplayItem</p>
+									<pre><code class="cpp">public bool OnDisplayItem(int iClient, const char[] szFeature, char[] szDisplay, int iMaxLength)
+{
+    if(VIP_IsClientFeatureUse(iClient, szFeature)) // Проверяем что функция включена у игрока
+    {
+        int iTeleports = VIP_GetClientFeatureInt(iClient, szFeature);
+        // VIP_GetClientFeatureInt(iClient, szFeature) - Получит количество доступных телепортов (То что в конфиге указано в &quot;Teleport&quot;)
+        if(iTeleports &gt; 0) // Если кол-во телепортов ограничено
+        {
+            // Выводим кол-во оставшихся телепортов.
+            FormatEx(szDisplay, iMaxLength, &quot;%T [Осталось: %d]&quot;, szFeature, iClient, VIP_GetClientFeatureInt(iClient, szFeature)-g_iClientTeleports[iClient]);
+            // Если вернуть true то будет выводиться то что в sDisplay.
+            return true;
+        }
+    }
+
+    // А во всех остальных случаях нужно выводить без изменений
+
+    return false;
+}
+</code></pre>
+									<p>Теперь я хочу чтобы когда у игрока не осталось доступных телепортов то пункт становился не активным (белым, его нельзя будет нажать)
+										Согласно прототипу:
+									</p>
+									<pre><code class="cpp">typedef ItemDrawCallback = function int (int iClient, const char[] szFeature, int iStyle);
+</code></pre>
+									<p>Получаем:</p>
+									<pre><code class="cpp">public int OnDrawItem(int iClient, const char[] szFeature, int iStyle)
+{
+    if(VIP_IsClientFeatureUse(iClient, szFeature)) // Проверяем у игрока есть доступ
+    {
+        int iTeleports = VIP_GetClientFeatureInt(iClient, szFeature);
+        if(iTeleports &gt; 0 &amp;&amp; iTeleports == g_iClientTeleports[iClient]) // Если кол-во телепортов ограничено и достигнут лимит
+        {
+            return ITEMDRAW_DISABLED;
+        }
+    }
+
+    return iStyle;
+}
+</code></pre>
+									<p>Далее мелочи.</p>
+									<p>Очищаем переменную при выходе игрока:</p>
+									<pre><code class="cpp">public void OnClientDisconnect(int iClient)
+{
+    g_iClientTeleports[iClient] = 0;
+}
+</code></pre>
+									<p>Обнуляем кол-во телепортаций в начале раунда:</p>
+									<pre><code class="cpp">public void Event_RoundStart(Event hEvent, const char[] szEventName, bool bDontBroadcast)
+{
+    for (int i = 1; i &lt;= MaxClients; ++i)
+    {
+        g_iClientTeleports[i] = 0;
+    }
+}
+</code></pre>
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>

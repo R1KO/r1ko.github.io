@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en" >
+	<![endif]-->
+	<!--[if gt IE 8]><!--> 
+	<html class="no-js" lang="en" >
+		<!--<![endif]-->
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Ядро - Установка</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="current">
+										<a class="current" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Ядро &raquo;</li>
+									<li>Установка</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1 id="_1">Установка</h1>
+									<ol>
+										<li>
+											Скачать архив с актуальной версией ядра:
+											<ul>
+												<li>
+													<code>R (Release)</code> - Стабильная реализная версия.
+													<ul>
+														<li><a href="https://github.com/R1KO/VIP-Core/archive/master.zip">GitHub</a></li>
+														<li><a href="http://hlmod.ru/resources/vip-core.245/">HLMod</a></li>
+													</ul>
+												</li>
+												<li>
+													<code>DEV (Development)</code> - Условно стабильная версия. Именно в ней можно найти экспериментальные функции и фишки, которые требуют тестирования и которые, в конечном счете, могут так и не появится в стабильной версии. В этой версии возможно наличие багов и глюков.
+													<ul>
+														<li><a href="https://github.com/R1KO/VIP-Core/archive/master.zip">GitHub</a></li>
+														<li><a href="http://hlmod.ru/resources/vip-core.245/">HLMod</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>Распаковать архив</li>
+										<li>Залить файлы на сервер соблюдая иерархию</li>
+										<li>
+											Далее необходимо определиться с базой данных.
+											У вас есть 2 варианта:
+											<ul>
+												<li><strong><em>SQLite</em></strong> - Локальная база, которая находится в папке с сервером. Сравнительно быстрее, но обращаться к ней может только сервер. Ограничена объемом памяти выделенным под сервер. Рекомендуется выбирать если не планируется привязка сайта или автоматизация оплаты.</li>
+												<li><strong><em>MySQL</em></strong> - Удаленная база, находящаяся на отдельном сервере. Сравнительно медленнее, но может работать одновременно с несколькими серверами и сайтами. Рекомендуется выбирать если необходимо иметь единую базу VIP-игроков для нескольких серверов.</li>
+											</ul>
+										</li>
+										<li>
+											<p>Если вы выбрали <strong><em>SQLite</em></strong> - переходим к пункту 6. Если же вы хотите использовать <strong><em>MySQL</em></strong> необходимо:</p>
+											<ul>
+												<li>Создать базу данных <strong><em>MySQL</em></strong> используя средства предоставляемые хостингом (например: <code>phpMyAdmin</code>,  <code>ISPmanager</code>).</li>
+												<li>Открыть файл <code>addons/sourcemod/configs/databases.cfg</code> и добавить в него секцию (перед последней закрывающей скобкой <code>}</code>):</li>
+												<p>
+<pre>
+<code>"vip"
+{
+	"driver"        "mysql"
+	"host"          "127.0.0.1" // IP сервера где находится ваша база
+	"database"      "vip"       // Название базы данных
+	"user"          "root"      // Имя пользователя базы данных
+	"pass"          "123456"    // Пароль для этого пользователя
+}
+</code>
+</pre>
+												</p>
+												<li>Запустить плагин чтобы создался файл <code>cfg/vip/VIP_Core.cfg</code>. Затем открыть его и вписать нужное значение для <strong>sm_vip_server_id</strong>. ID сервера это любое число больше 0, которое позволяет плагину отличать сервера в базе данных друг от друга. Т.е. это уникальный номер сервера. Если вы хотите чтобы VIP-статус выдавался игрокам независимо от сервера - установите для всех серверов одинаковый ID.</li>
+											</ul>
+										</li>
+										<li>
+											<p>Для мониторинга игр и используемых версий плагина используется плагин сбора статистики: <strong><em><a href="http://hlmod.ru/resources/vip-stats.290/">[VIP] Stats</a></em></strong>
+												Настоятельно рекомендую его установить. 
+											</p>
+										</li>
+									</ol>
+									<p>На этом установка плагина завершена и можно перейти к его настройке <strong><em><a href="../Core/Tuning">[VIP-Core] Настройка</a></em></strong></p>
+								
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>
+	<!--
+		MkDocs version : 0.17.0
+		Build Date UTC : 2017-12-29 20:31:34
+		-->

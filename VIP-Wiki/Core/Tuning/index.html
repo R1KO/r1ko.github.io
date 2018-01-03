@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+	<html class="no-js" lang="en" >
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="None">
+			<meta name="author" content="R1KO">
+			<link rel="shortcut icon" href="./img/favicon.ico">
+			<title>VIP Wiki - Ядро - Настройка</title>
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/theme_extra.css" type="text/css" />
+			<link rel="stylesheet" href="/VIP-Wiki/css/highlight.css">
+		</head>
+		<body class="wy-body-for-nav" role="document">
+			<div class="wy-grid-for-nav">
+				<nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+					<div class="wy-side-nav-search">
+						<a href="." class="icon icon-home"> VIP Wiki</a>
+					</div>
+					<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+						<ul class="current">
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/">Главная</a>
+							</li>
+							<li class="toctree-l1">
+								<a class="" href="/VIP-Wiki/Problems-And-Solutions/">Частые проблемы и их решения</a>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Ядро</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Install/">Установка</a>
+									</li>
+									<li class="current">
+										<a class="current" href="/VIP-Wiki/Core/Tuning/">Настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Commands/">Команды</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/ConVars/">Переменные (ConVar`s)</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Core/Compile/">Компиляция</a>
+									</li>
+								</ul>
+							</li>
+							<li class="toctree-l1">
+								<span class="caption-text">Модули</span>
+								<ul class="subnav">
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Install-And-Tuning/">Установка и настройка</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Update/">Обновление</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Adaptation/">Адаптация</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/Compile/">Компиляция</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/For-Developers/">Для разработчиков</a>
+									</li>
+									<li class="">
+										<a class="" href="/VIP-Wiki/Modules/List/">Список модулей</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					&nbsp;
+				</nav>
+				<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+					<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+						<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+						<a href=".">VIP Wiki</a>
+					</nav>
+					<div class="wy-nav-content">
+						<div class="rst-content">
+							<div role="navigation" aria-label="breadcrumbs navigation">
+								<ul class="wy-breadcrumbs">
+									<li><a href=".">VIP Wiki</a> &raquo;</li>
+									<li>Ядро &raquo;</li>
+									<li>Настройка</li>
+								</ul>
+								<hr/>
+							</div>
+							<div role="main">
+								<div class="section">
+									<h1 id="_1">Настройка</h1>
+									<p><em>Во всех конфигах поддерживаются комментарии:</em> <code>// Комментарий</code></p>
+									<ul>
+										<li>
+											<p><code>addons/sourcemod/data/vip/cfg/</code> - Файлы конфигурации ядра</p>
+											<ul>
+												<li><code>groups.ini</code> - Файл с VIP-группами.</li>
+											</ul>
+											<p>Содержимое:</p>
+											<pre><code>"VIP_GROUPS"
+{
+    "Gold" // Группа с именем Gold
+    {
+        // Параметры
+    }
+
+    "Silver" // Группа с именем Silver
+    {
+        // Параметры
+    }
+}
+</code></pre>
+											<p>Вы можете создавать любое количество групп.</p>
+											<blockquote>
+												<p>Имя группы должно состоять <strong>только из символов</strong>: <code>a-z</code>, <code>A-Z</code>, <code>а-я</code>, <code>А-Я</code>, <code>0-9</code>, <code>_</code> и пробелов.</p>
+											</blockquote>
+											<p>Подробнее о <strong>параметрах</strong> написано здесь -&gt; <a href="../Modules/Install">[VIP] Modules</a></p>
+											<ul>
+												<li><code>times.ini</code> - Файл настройки времени для админ-меню.</li>
+												<li>
+													<p><code>sort_menu.ini</code> - Файл сортировки пунктов в VIP-меню.
+														Вписываете в нужном порядке уникальные имена функций и подменю.
+														Пример:
+													</p>
+<p><pre><code>HP
+Armor
+Money
+Speed</code></pre></p>
+												</li>
+											</ul>
+											<p>Всё что не вписано в данный файл будет идти поле отсортированых пунктов в случайном порядке (на самом деле в порядке загрузки модулей).</p>
+											<ul>
+												<li><code>info.ini</code> - Файл настройки информационных сообщений для VIP-игроков.</li>
+											</ul>
+											<p>Файл обабатывает 4 события:</p>
+											<ul>
+												<li><code>"connect_info_time"</code> - Сообщение для VIP-игрока при входе на сервер для тех, у кого вип на время</li>
+												<li><code>"connect_info_perm"</code> - Сообщение для VIP-игрока при входе на сервер для тех, у кого вип навсегда</li>
+												<li><code>"no_access_info"</code> - Сообщение для игрока об остутствии VIP-статуса</li>
+												<li><code>"expired_info"</code> - Сообщение для игрока об истечении VIP-статуса</li>
+											</ul>
+											<p><em>Если не хотите уведомлять игрока о событии</em> - <strong>удалите его из файла</strong>.</p>
+											<p>Каждое событие может выводить информацию в:</p>
+											<ul>
+												<li><code>"chat"</code> - Чат.</li>
+												<li><code>"menu"</code> - Меню.</li>
+												<li><code>"url"</code> - MOTD окно.</li>
+											</ul>
+											<p>Пример:</p>
+											<pre><code>"VIP_INFO"
+{
+    "connect_info_time" // Сообщение для VIP-игрока при входе на сервер (когда вип на время)
+    {
+        //  {NAME}  - Ник игрока
+        //  {GROUP} - Группа игрока
+        //  {TIMELEFT}  - Через сколько истекает VIP-статус
+        //  {EXPIRES}   - Когда истекает VIP-статус
+
+        "chat"      // Сообщение в чат
+        {
+            "ru"        "{DEFAULT}Здравствуйте, {GREEN}{NAME}{DEFAULT}! Вы являетесь {LIGHTGREEN}VIP-игроком{DEFAULT}. Ваш VIP статус истекает {GREEN}{EXPIRES}"
+            "en"        "{DEFAULT}Hello, {GREEN}{NAME}{DEFAULT}! You have {LIGHTGREEN}VIP features {DEFAULT}for {GREEN}{EXPIRES}"
+        }
+        "menu"      // Сообщение в меню
+        {
+            "time"      "30"    // Через сколько секунд меню будет закрыто автоматически (0 - пока игрок сам не закроет)
+            "ru"
+            {
+                // Пукнты меню
+                "item"  "Вы имеете VIP-статус"
+                "item"  "SPACER"
+                "item"  "Группа: {GROUP}"
+                "item"  "Истекает: {EXPIRES}"
+                "item"  "Истекает через: {TIMELEFT}"
+            }
+            "en"
+            {
+                "item"  "You have a VIP-status"
+                "item"  "SPACER"
+                "item"  "Group: {GROUP}"
+                "item"  "Expires: {EXPIRES}"
+                "item"  "Expires in: {TIMELEFT}"
+            }
+        }
+    }
+    "connect_info_perm" // Сообщение для VIP-игрока при входе на сервер (когда вип навсегда)
+    {
+        //  {NAME}  - Ник игрока
+        //  {GROUP} - Группа игрока
+
+        "chat"      // Сообщение в чат
+        {
+            "ru"        "{DEFAULT}Здравствуйте, {GREEN}{NAME}{DEFAULT}! Вы являетесь {LIGHTGREEN}VIP-игроком{DEFAULT}."
+            "en"        "{DEFAULT}Hello, {GREEN}{NAME}{DEFAULT}! You have  {LIGHTGREEN}VIP features{DEFAULT}."
+        }
+        "menu"      // Сообщение в меню
+        {
+            "time"      "30"    // Через сколько секунд меню будет закрыто автоматически (0 - пока игрок сам не закроет)
+            "ru"
+            {
+                // Пукнты меню
+                "item"  "Вы имеете VIP-статус"
+                "item"  "Группа: {GROUP}"
+            }
+            "en"
+            {
+                "item"  "You have a VIP-status"
+                "item"  "Group: {GROUP}"
+            }
+        }
+    }
+    "no_access_info"    // Сообщение об остутствии VIP-статуса
+    {
+        "menu"      // Сообщение в меню
+        {
+            "time"      "30"    // Через сколько секунд меню будет закрыто автоматически (0 - пока игрок сам не закроет)
+            "ru"
+            {
+                // Пукнты меню
+                "item"  "У вас нет доступа к этому меню !!!"
+                "item"  "Чтобы приобрести VIP-статус"
+                "item"  "обратитесь к администратору"
+            }
+            "en"
+            {
+                "item"  "You do not have access to this menu !!!"
+                "item"  "To purchase VIP-status"
+                "item"  "contact the administrator"
+            }
+        }
+
+        "url"       // Ссылка, которую нужно открыть
+        {
+            "ru"        "http://mysite.ru/vip/no_access.php?lang=ru"
+            "en"        "http://mysite.ru/vip/no_access.php?lang=en"
+        }
+    }
+    "expired_info"  // Сообщение об истечении VIP-статуса
+    {
+        "menu"  // Сообщение в меню
+        {
+            "time"      "30"    // Через сколько секунд меню будет закрыто автоматически (0 - пока игрок сам не закроет)
+            "ru"
+            {
+                // Пукнты меню
+                "item"  "Срок вашего VIP-статуса истек."
+                "item"  "Чтобы вновь приобрести VIP-статус"
+                "item"  "обратитесь к администратору"
+            }
+            "en"
+            {
+                "item"  "Your VIP-status has expired."
+                "item"  "To re-purchase VIP-status"
+                "item"  "contact the administrator"
+            }
+        }
+    }
+}
+</code></pre>
+										</li>
+										<li>
+											<p><code>addons/sourcemod/data/vip/modules/</code> - Файлы конфигураций модулей</p>
+											<ul>
+												<li><code>downloadlist.txt</code> - Файл со списком файлов для загрузки клиентам.</li>
+											</ul>
+											<p>Можно указывать как полный путь к файлу, так и просто директорию.</p>
+											<p>Пример:</p>
+											<pre><code>// Полные пути к файлам
+models/hangover/hats/ushanka/ushanka.dx80.vtx
+models/hangover/hats/ushanka/ushanka.dx90.vtx
+models/hangover/hats/ushanka/ushanka.mdl
+models/hangover/hats/ushanka/ushanka.sw.vtx
+models/hangover/hats/ushanka/ushanka.vvd
+
+particles/random_stuff.pcf
+
+// Путь к директории
+materials/hangover/hats/
+models/shop/
+</code></pre>
+											<ul>
+												<li><code>Конфиги модулей</code> - Файлы настройки модулей. Прилагаются в архиве к модулю. Могут отсутствовать.
+													Пример: <code>trails.ini</code>, <code>aura_colors.ini</code>, <code>auto_buy.ini</code>, <code>chat_config.ini</code>, <code>skins.txt</code>, ...
+												</li>
+											</ul>
+										</li>
+										<li>
+											<p><code>addons/sourcemod/data/sqlite/</code> - Файлы локальных баз данных</p>
+											<ul>
+												<li><code>vip.sq3</code> - Файл локальной базы данных VIP. Создается при первом запуске с использованием <strong>SQLite</strong> базы.</li>
+												<li><code>vip_*.sq3</code> - Файлы локальных баз данных VIP модулей.
+													Пример: <code>vip_test.sq3</code>, <code>vip_keys.sq3</code>, ...
+												</li>
+											</ul>
+										</li>
+										<li>
+											<p><code>addons/sourcemod/plugins/vip/</code></p>
+											<ul>
+												<li><code>VIP_Core.smx</code> - Основной плагин-ядро VIP-плаигина.</li>
+												<li><code>VIP_*.smx</code> - Модули VIP-плагина (название может отличаться).
+													Пример: <code>VIP_Skins.smx</code>, <code>VIP_AutoBuy_1.0.smx</code>, ...
+												</li>
+											</ul>
+										</li>
+										<li>
+											<p>addons/sourcemod/scripting/include/`</p>
+											<ul>
+												<li><code>vip_core.inc</code> - Библиотека плагина. Нужна для компиляции.</li>
+											</ul>
+										</li>
+										<li>
+											<p><code>addons/sourcemod/translations/</code></p>
+											<ul>
+												<li><code>vip_core.phrases.txt</code> - Файл перевода ядра.</li>
+												<li><code>vip_modules.phrases.txt</code> - Файл перевода имен функций модулей.</li>
+												<li><code>vip_*.phrases.txt</code> - Файлы переводов модулей.
+													Пример: <code>vip_chat.phrases.txt</code>, <code>vip_auto_buy.phrases.txt</code>, <code>vip_gloves.phrases.txt</code>, <code>vip_skins.phrases.txt</code>, ...
+												</li>
+											</ul>
+										</li>
+										<li>
+											<p><code>cfg/vip/</code></p>
+											<ul>
+												<li><code>VIP_Core.cfg</code> - Файл с настройками ядра. Генерируется автоматически при первом запуске плагина.</li>
+												<li><code>VIP_*.cfg</code> - Файлы с настройками модулей.
+													Пример: <code>VIP_Respawn.cfg</code>, <code>VIP_TeammatesHeal.cfg</code>, ...
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<footer>
+								<hr/>
+							</footer>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="rst-versions" role="note" style="cursor: pointer">
+				<span class="rst-current-version" data-toggle="rst-current-version">
+				<a href="https://github.com/R1KO/VIP-Core" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+				</span>
+			</div>
+		</body>
+	</html>
